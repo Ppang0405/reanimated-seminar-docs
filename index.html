@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reanimated seminar</title>
+		<title>Reanimated Seminar</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,10 +16,39 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
+				<section data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					React Native Reanimated Seminar
+
+					<p>by Jeremy</p>
+				</section>
+
+				<!-- video backgrounds -->
+				<!-- <section data-background-video="https://static.slid.es/site/homepage/v1/homepage-video-editor.mp4" 
+					data-background-video-loop data-background-video-muted>
+					<h2>Video</h2>
+					</section> -->
+
+				<!-- background with colors -->
+				<!-- <section
+				data-background-transition="convex"
+				data-background-gradient="linear-gradient(to bottom, #283b95, #17b2c3)">
+					<h2>🐟</h2>
+				  </section>
+				  <section data-background-gradient="radial-gradient(#283b95, #17b2c3)">
+					<h2>🐳</h2>
+				  </section> -->
+
+				  <!-- image background -->
+				  <!-- <section data-background-image="https://picsum.photos/id/237/800/1000">
+					<h2>Image</h2>
+				  </section>
+				  <section data-background-image="https://picsum.photos/200/300?grayscale" 
+							data-background-size="100px" data-background-repeat="repeat">
+					<h2>This background image will be sized to 100px and repeated</h2>
+				  </section> -->
 
 				<!-- highlight all some code -->
-				<section>
+				<!-- <section>
 					<pre><code data-trim data-noescape>
 						(def lazy-fib
 						  (concat
@@ -27,10 +56,10 @@
 						   ((fn rfib [a b]
 								(lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
 						  </code></pre>
-				</section>
+				</section> -->
 
 				<!-- hightlight code by lines -->
-				<section>
+				<!-- <section>
 					<pre><code data-line-numbers="3,8-10">
 						<table>
 						  <tr>
@@ -45,10 +74,10 @@
 						  </tr>
 						</table>
 						</code></pre>
-				</section>
+				</section> -->
 
 				<!-- step by step highlight code -->
-				<section>
+				<!-- <section>
 					<pre><code data-line-numbers="3-5|8-10|13-15">
 						<table>
 						  <tr>
@@ -68,29 +97,270 @@
 						  </tr>
 						</table>
 						</code></pre>
-				</section>
+				</section> -->
 
 				<!-- vertical section -->
 				<section>
-					<section>Verical 1</section>
-					<section>Verical 2</section>
+					<section> Problem?
+						<br>
+						<br>
+						<pre><code data-trim data-noescape>
+						import { Animated } from "react-native";
+
+						</code></pre>
+
+						<br>
+						<!-- <br> -->
+						<pre><code data-trim data-noescape>
+							import * as Animatable from 'react-native-animatable';
+						</code></pre>
+
+
+					</section>
+
+					<section>
+						<video
+						height="720"
+						controls
+						loop
+						data-autoplay src="./assets/problem.MP4"></video>
+					</section>
+
+					<section>
+						<pre><code data-line-numbers data-trim data-noescape>
+							handleTapReaction(goalId, async () => {
+								callAPI()
+								heartRef.current?.transition({
+									opacity: 0
+								}, {
+									opacity: 1
+								});
+								heartRef.current?.transition({
+									width: sizes.size_50,
+									height: sizes.size_50,
+								}, {
+									width: sizes.size_100,
+									height: sizes.size_100,
+								});
+								await sleep(500);
+								heartRef.current?.transition({
+									opacity: 1
+								}, {
+									opacity: 0
+								});
+							});
+	
+							</code></pre>
+
+					</section>
+						
+					<section>
+						<img data-src="./assets/react-native-threads.png">
+					</section>
+
+					<section>
+						JS thread's always busy with:
+						<br>
+						<br>
+						- fetching apis
+						<br>
+						- loading screens
+						<br>
+						- low-end devices
+					</section>
+					
+					<section>
+						solution?
+						<pre><code data-trim data-noescape>
+							{useNativeDriver: true}
+							</code></pre>
+							<br>
+							<pre><code data-trim data-noescape>
+								requestAnimationFrame
+								</code></pre>
+
+								<br>
+
+								<pre><code data-trim data-noescape>
+								InteractionManager.runAfterInteractions(() => {
+									// running tasks
+								});
+								
+							</code></pre>
+					</section>
+
+					<section>
+						<h2>🐟</h2>
+						<pre><code data-line-numbers="20" data-trim data-noescape>
+							handleTapReaction(goalId, async () => {
+								heartRef.current?.transition({
+									opacity: 0
+								}, {
+									opacity: 1
+								});
+								heartRef.current?.transition({
+									width: sizes.size_50,
+									height: sizes.size_50,
+								}, {
+									width: sizes.size_100,
+									height: sizes.size_100,
+								});
+								await sleep(500);
+								heartRef.current?.transition({
+									opacity: 1
+								}, {
+									opacity: 0
+								});
+								callAPI()
+							});
+	
+							</code></pre>
+
+					</section>
 				</section>
 
-				<!-- use markdown -->
-				<section data-markdown>Slide 3
-					<textarea data-template>
-						## Slide 1
-						A paragraph with some text and a [link](http://hakim.se).
-						---
-						## Slide 2
-						---
-						## Slide 3
-					  </textarea>
-					  <!-- private notes for presentation -->
-					<aside class="notes">
-						Shhh, these are your private notes 📝
-					  </aside>
+				 <!-- ly thuyet -->
+				<section>
+					<section> Reanimated Basic
+						<br>
+						<pre><code data-trim data-noescape>
+							import Animated from 'react-native-reanimated'
+							
+						</code></pre>
+					</section>
+
+					<section> Define animated value 
+						<br>
+						<pre><code data-trim data-noescape>
+							const fade = useRef(new Animated.Value(0)).current;
+							
+						</code></pre>
+						<br>
+						<pre><code data-trim data-noescape>
+							import { useSharedValue } from 'react-native-reanimated';
+
+							const sharedVal = useSharedValue(0);
+						</code></pre>
+						
+					</section>
+
+					<section> change animated value 
+						<br>
+						<pre><code data-trim data-noescape>
+							import { useSharedValue } from 'react-native-reanimated';
+
+							const sharedVal = useSharedValue(0);
+
+							sharedVal.value = 1
+						</code></pre>
+						
+					</section>
+
+					<section> animated style 
+						<br>
+						<pre><code data-trim data-noescape>
+							const offset = useSharedValue(0);
+							  
+							const animatedStyles = useAnimatedStyle(() => {
+								return {
+								transform: [{ translateX: offset.value * 255 }],
+								};
+							});
+						</code></pre>
+
+						<br>
+						<pre>
+							<code data-trim data-noescape>
+						Animated.View style={[styles.box, animatedStyles]} />
+						</code>
+						
+					</section>
+
+					<section> Configuring animations
+						<br>
+						<pre><code data-trim data-noescape>
+							const duration = 17
+							const recordTimer = useSharedValue(duration)
+							  
+							recordTimer.value = withTiming(0, {
+								duration: 1_000 * duration,
+								easing: Easing.linear,
+							  })
+						</code></pre>
+
+						<br>
+						
+					</section>
+
+					<section>
+						<img data-src="./assets/easings.png">
+					</section>
+
+					<section>
+						<video data-autoplay
+						height="720"
+						controls
+						src="https://user-images.githubusercontent.com/64536259/188470801-689e075e-90e9-457d-a05d-8df67a45358b.MP4"></video>
+					</section>
+
+					<section>
+						<img height="720" data-src="./assets/final-result-1.png">
+					</section>
+
+					<section>
+						<img height="720" data-src="./assets/final-result-2.png">
+					</section>
 				</section>
+
+				<!-- showcase -->
+				<section>
+					
+					<section>
+						<video
+						height="720"
+						controls
+						loop
+						data-autoplay src="./assets/kcal-circle.mp4"></video>
+					</section>
+					<section>
+						<video
+						height="720"
+						controls
+						loop
+						data-autoplay src="./assets/walk-through.mp4"></video>
+					</section>
+					<section>
+						<video
+						height="720"
+						controls
+						loop
+						data-autoplay src="./assets/sticky-header-.mp4"></video>
+					</section>
+					<section>
+						<video
+						height="720"
+						controls
+						loop
+						data-autoplay src="./assets/drag-drop.mp4"></video>
+					</section>
+					
+					<!-- <video>
+						<source data-src="./assets/drag-drop.mp4" type="video/mp4" />
+						<source data-src="./assets/kcal-circle.mp4" type="video/mp4" />
+						<source data-src="./assets/sticky-header-.mp4" type="video/mp4" />
+						<source data-src="./assets/walk-through.mp4" type="video/mp4" />
+					  </video> -->
+				</section>
+
+				<section>
+					Questions?
+				</section>
+
+				<!-- thank you -->
+				<section>
+					Thanks for watching
+				</section>
+				
 			</div>
 		</div>
 
